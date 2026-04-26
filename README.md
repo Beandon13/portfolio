@@ -1,10 +1,12 @@
 # Brian Zarnitz
 
-AI engineer available for freelance and contract work in agent engineering, LLM and agent evaluation, AI safety / red teaming, and edtech engineering.
+AI engineer available for freelance and contract work in agent systems, evaluation, and production AI plumbing.
+
+Featured case studies below show the kind of work I ship in real systems.
 
 ## Who I am
 
-Over a year of AI code evaluation and RLHF-style experience, currently studying CS at Binghamton University. I ship production-shaped systems, not notebook demos: multi-tenant agent platforms, retrieval-augmented tutoring, hardened LLM endpoints, and the SaaS plumbing that has to work when paying users hit it.
+Over a year of AI code evaluation and RLHF-style experience, currently studying CS at Binghamton University. I build and maintain production AI systems, not notebook demos: agent platforms, retrieval-augmented tutoring, hardened LLM endpoints, and the SaaS plumbing that has to work when real users hit it.
 
 ## What I do
 
@@ -34,7 +36,7 @@ Tech: Next.js 16 monorepo, TypeScript, Supabase + pgvector, Google Gemini, QStas
 
 ## Other work
 
-- [RustLabsCli](./other-work.md): a multi-agent terminal UI in TypeScript and Ink. Listed for completeness; provider integration is in progress.
+- [RustLabsCli](./other-work.md): a multi-agent terminal UI in TypeScript and Ink. Provider integration in progress.
 
 ## Services
 
@@ -53,4 +55,4 @@ Open to short engagements, weekly retainer, or scoped project work. Comfortable 
 - Email: bzarnitz23@gmail.com
 - GitHub: [Beandon13](https://github.com/Beandon13)
 
-If you want me to evaluate, harden, or build a piece of your AI stack, send the system you want me to look at. I will come back with specifics, not a sales pitch.
+If you need help evaluating, hardening, or building part of your AI stack, send me the system you want me to look at. I will come back with specifics, not a sales pitch.

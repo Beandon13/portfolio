@@ -2,7 +2,7 @@
 
 ## One-line summary
 
-A subscription SaaS that provisions per-user AI agents on isolated containers, controlled by a multi-provider supervisor hardened against prompt injection.
+A subscription SaaS that provisions private AI agents for each user and routes requests through a hardened multi-model supervisor.
 
 ## What it does
 
@@ -28,8 +28,8 @@ Sole author. I designed and built the platform end to end: auth flow, billing in
 
 ## Key engineering work
 
-- **Atomic, idempotent agent provisioning.** A subscription event triggers Railway service creation with per-user env vars (name, goals, timezone, model). The flow checks for existing services, uses a five-minute provisioning lock to block double-provision races, and rolls back orphaned services when later steps fail. A 100-service-per-project cap limits blast radius.
-- **Prompt-injection defense for the supervisor.** All user input passes a guard that detects more than twenty common injection patterns (instruction overrides, role injection, jailbreak prompts, directive spoofing). User-supplied context is sanitized before it touches the system prompt, and AI-generated task names are validated and bracket-escaped before being passed to the agent.
+- **Atomic, idempotent agent provisioning.** A subscription event spins up a Railway service with per-user env vars. The flow uses a provisioning lock to prevent double-provision races, rolls back orphaned services on partial failure, and caps blast radius at 100 services per project.
+- **Prompt-injection defense for the supervisor.** User input passes a guard that detects more than twenty common injection patterns. Context is sanitized before it reaches the system prompt, and AI-generated task names are validated and bracket-escaped before reaching the agent.
 - **Multi-provider supervisor with graceful fallback.** A single endpoint routes between Anthropic, Gemini, OpenAI, and xAI based on availability. If a provider key is missing or a request times out (30s cap), the next provider takes over without breaking the user-facing chat.
 - **Credit-gated chat with fail-open billing.** Each message checks credits before processing and reports usage after. If the billing provider is unavailable, the system fails open rather than locking users out, and reconciles afterward.
 - **Server-authoritative agent state.** Clients can never forge agent context. Every supervisor call fetches state server-side before assembling the prompt, so a malicious client can't pretend to be in a state it isn't in.
